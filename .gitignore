@@ -13,3 +13,6 @@ obj/
 
 # Ignore OS-specific files
 Thumbs.db
+
+*.csproj
+*.sln
