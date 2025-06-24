@@ -3,10 +3,12 @@
     public static void Main(string[] args)
     {
         Console.WriteLine("Welcome to Snake and LAdder Simulator");
+        Console.WriteLine();
         
-        int playerInitialPosition = 0;
+        int playerPosition = 0;
 
-        Console.WriteLine("PLayer Initial position in the game is " + playerInitialPosition);
+        Console.WriteLine("Player Initial position in the game is " + playerPosition);
+        Console.WriteLine();
 
         Random random = new Random();
 
@@ -14,5 +16,28 @@
 
         Console.WriteLine("Player Rolls the die..");
         Console.WriteLine("Die Shows: " + dieRoll);
+
+        int option = random.Next(0, 3);
+        Console.Write("Option: ");
+
+        switch(option)
+        {
+            case 0:
+                Console.WriteLine("No Play!The Player Stays in the same position.");
+                break;
+
+            case 1:
+                playerPosition += dieRoll;
+                Console.WriteLine("Ladder: Player moves ahead by " + dieRoll + " positions");
+                break;
+
+            case 2:
+                playerPosition -= dieRoll;
+                if (playerPosition < 0)
+                    playerPosition = 0;
+                Console.WriteLine("Snake! Player moves behind by " + dieRoll + " positions");
+                break;
+        }
+        Console.WriteLine("Player current Position: " + playerPosition);
     }
 }
