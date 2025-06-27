@@ -1,56 +1,55 @@
-﻿class SnakeAndLadder
+﻿using System;
+
+class SnakeAndLadder
 {
     public static void Main(string[] args)
     {
-        Console.WriteLine("Welcome to Snake and LAdder Simulator");
-        Console.WriteLine();
-        
-        int playerPosition = 0;
+        Console.WriteLine("Welcome to Snake and Ladder Simulator\n");
 
-        Console.WriteLine("Player Initial position in the game is " + playerPosition);
-        Console.WriteLine();
+        int playerPosition = 0;
+        int diceRollCount = 0;
+        Random random = new Random();
 
         while (playerPosition < 100)
         {
-            Random random = new Random();
+            diceRollCount++;
 
-            int dieRoll = random.Next(1, 7);
+            int dieRoll = random.Next(1, 7); 
+            Console.WriteLine("\nRoll #" + diceRollCount);
+            Console.WriteLine("Player rolls the die... Die shows: " + dieRoll);
 
-            Console.WriteLine("Player Rolls the die..");
-            Console.WriteLine("Die Shows: " + dieRoll);
-
-            int option = random.Next(0, 3);
-            Console.Write("Option: ");
+            int option = random.Next(0, 3); 
 
             switch (option)
             {
                 case 0:
-                    Console.WriteLine("No Play!The Player Stays in the same position.");
+                    Console.WriteLine("Option: No Play! Player stays at position " + playerPosition);
                     break;
 
-                case 1: 
+                case 1:
                     if (playerPosition + dieRoll <= 100)
                     {
                         playerPosition += dieRoll;
-                        Console.WriteLine("Option: Ladder!! Player moves ahead by " + dieRoll + " positions.");
+                        Console.WriteLine("Option: Ladder! Player moves ahead by " + dieRoll + " positions.");
                     }
                     else
                     {
-                        Console.WriteLine("Option: Ladder!! Move exceeds 100. Player stays at position " + playerPosition);
+                        Console.WriteLine("Option: Ladder! Move exceeds 100. Player stays at position " + playerPosition);
                     }
                     break;
-                case 2:
+
+                case 2: 
                     playerPosition -= dieRoll;
                     if (playerPosition < 0)
                         playerPosition = 0;
-                    Console.WriteLine("Snake! Player moves behind by " + dieRoll + " positions");
+                    Console.WriteLine("Option: Snake! Player moves behind by " + dieRoll + " positions.");
                     break;
             }
-            Console.WriteLine("Player current Position: " + playerPosition);
+
+            Console.WriteLine("Player current position: " + playerPosition);
         }
-        Console.WriteLine("Player wins the game!!");
-            
-        
+
+        Console.WriteLine("\n Player wins the game by reaching exactly 100!");
+        Console.WriteLine(" Total number of dice rolls: " + diceRollCount);
     }
 }
-
